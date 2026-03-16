@@ -1,3 +1,515 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+/* =========================================
+   QUARTZ CYBERPUNK-STYLE OVERRIDES
+   Token-driven: relies on Quartz theme vars
+   ========================================= */
+
+html,
+body {
+  background:
+    radial-gradient(
+      circle at top left,
+      color-mix(in srgb, var(--tertiary) 14%, transparent),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at top right,
+      color-mix(in srgb, var(--secondary) 12%, transparent),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--light) 92%, black 8%) 0%,
+      color-mix(in srgb, var(--light) 96%, black 4%) 45%,
+      var(--light) 100%
+    );
+  color: var(--darkgray);
+}
+
+body {
+  color: var(--darkgray);
+  letter-spacing: 0.01em;
+}
+
+/* subtle screen texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--dark) 3%, transparent) 0px,
+    color-mix(in srgb, var(--dark) 3%, transparent) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  opacity: 0.12;
+  z-index: 0;
+}
+
+.page,
+#quartz-body,
+.sidebar,
+.center,
+.page-header,
+.page-footer,
+footer,
+article {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
+
+p,
+ul,
+text,
+a,
+tr,
+td,
+li,
+ol,
+ul,
+.katex,
+.math,
+.typst-doc,
+g[class~="typst-text"] {
+  color: var(--darkgray);
+  fill: var(--darkgray);
+}
+
+path[class~="typst-shape"] {
+  stroke: var(--darkgray);
+}
+
+strong {
+  color: var(--dark);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--secondary) 14%, transparent);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+thead {
+  color: var(--dark);
+  text-shadow:
+    0 0 8px color-mix(in srgb, var(--secondary) 22%, transparent),
+    0 0 18px color-mix(in srgb, var(--tertiary) 10%, transparent);
+  letter-spacing: 0.025em;
+}
+
+h1 {
+  color: color-mix(in srgb, var(--dark) 82%, var(--tertiary) 18%);
+  text-shadow:
+    0 0 10px color-mix(in srgb, var(--tertiary) 28%, transparent),
+    0 0 22px color-mix(in srgb, var(--secondary) 10%, transparent);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--tertiary) 38%, transparent);
+  color: var(--dark);
+}
+
+/* =========================================
+   LINKS
+   ========================================= */
+
+a {
+  color: var(--secondary);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--secondary) 18%, transparent);
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    color: var(--tertiary);
+    text-shadow:
+      0 0 8px color-mix(in srgb, var(--tertiary) 35%, transparent),
+      0 0 18px color-mix(in srgb, var(--tertiary) 18%, transparent);
+  }
+
+  &.internal {
+    background-color: color-mix(in srgb, var(--secondary) 9%, transparent);
+    border: 1px solid color-mix(in srgb, var(--secondary) 16%, transparent);
+    border-radius: 6px;
+    padding: 0 0.25rem;
+    box-shadow:
+      inset 0 0 0 1px color-mix(in srgb, var(--secondary) 6%, transparent),
+      0 0 10px color-mix(in srgb, var(--secondary) 7%, transparent);
+
+    &:hover {
+      background-color: color-mix(in srgb, var(--tertiary) 10%, transparent);
+      border-color: color-mix(in srgb, var(--tertiary) 18%, transparent);
+      box-shadow:
+        inset 0 0 0 1px color-mix(in srgb, var(--tertiary) 8%, transparent),
+        0 0 14px color-mix(in srgb, var(--tertiary) 10%, transparent);
+    }
+
+    &.broken {
+      color: color-mix(in srgb, var(--gray) 82%, var(--darkgray) 18%);
+      opacity: 0.75;
+    }
+
+    &:has(> img) {
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  &.external .external-icon > path {
+    fill: var(--secondary);
+  }
+}
+
+/* =========================================
+   PANELS / SURFACES
+   ========================================= */
+
+.page > #quartz-body .sidebar,
+.page-header,
+.page-footer,
+.center > article,
+footer,
+.table-container,
+pre,
+blockquote {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--light) 88%, var(--secondary) 4%) 0%,
+      color-mix(in srgb, var(--light) 94%, black 6%) 100%
+    );
+  border: 1px solid color-mix(in srgb, var(--secondary) 13%, var(--lightgray) 87%);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--dark) 3%, transparent) inset,
+    0 14px 38px color-mix(in srgb, black 28%, transparent),
+    0 0 22px color-mix(in srgb, var(--secondary) 5%, transparent);
+  border-radius: 14px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.page-header,
+.page-footer,
+.center > article,
+footer {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.page > #quartz-body .sidebar.left,
+.page > #quartz-body .sidebar.right {
+  border-radius: 16px;
+}
+
+.center > article {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--secondary) 5%, transparent) inset,
+    0 18px 50px color-mix(in srgb, black 34%, transparent),
+    0 0 28px color-mix(in srgb, var(--secondary) 5%, transparent);
+}
+
+/* =========================================
+   BLOCKQUOTE
+   ========================================= */
+
+blockquote {
+  border-left: 3px solid color-mix(in srgb, var(--tertiary) 88%, var(--secondary) 12%);
+  padding: 1rem 1rem 1rem 1.2rem;
+  box-shadow:
+    inset 0 0 24px color-mix(in srgb, var(--tertiary) 4%, transparent),
+    0 0 18px color-mix(in srgb, var(--tertiary) 7%, transparent);
+}
+
+/* =========================================
+   CODE
+   ========================================= */
+
+code {
+  color: color-mix(in srgb, var(--dark) 75%, var(--secondary) 25%);
+  background: color-mix(in srgb, var(--secondary) 10%, var(--lightgray) 90%);
+  border: 1px solid color-mix(in srgb, var(--secondary) 12%, transparent);
+  border-radius: 6px;
+  padding: 0.12rem 0.35rem;
+}
+
+figure[data-rehype-pretty-code-figure] {
+  margin: 1rem 0;
+
+  & > [data-rehype-pretty-code-title] {
+    color: color-mix(in srgb, var(--dark) 72%, var(--tertiary) 28%);
+    background: color-mix(in srgb, var(--tertiary) 10%, var(--light) 90%);
+    border: 1px solid color-mix(in srgb, var(--tertiary) 18%, transparent);
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 0 12px color-mix(in srgb, var(--tertiary) 8%, transparent);
+  }
+}
+
+pre {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--light) 84%, black 16%),
+      color-mix(in srgb, var(--light) 92%, black 8%)
+    );
+  border: 1px solid color-mix(in srgb, var(--secondary) 16%, var(--lightgray) 84%);
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--secondary) 5%, transparent) inset,
+    0 0 20px color-mix(in srgb, var(--secondary) 8%, transparent),
+    0 14px 34px color-mix(in srgb, black 34%, transparent);
+
+  &:has(> code.mermaid) {
+    border-color: color-mix(in srgb, var(--tertiary) 16%, var(--lightgray) 84%);
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--tertiary) 4%, transparent) inset,
+      0 0 18px color-mix(in srgb, var(--tertiary) 6%, transparent),
+      0 14px 34px color-mix(in srgb, black 34%, transparent);
+  }
+
+  & > code {
+    color: var(--darkgray);
+
+    & [data-highlighted-chars] {
+      background-color: color-mix(in srgb, var(--tertiary) 16%, transparent);
+      box-shadow: 0 0 10px color-mix(in srgb, var(--tertiary) 8%, transparent);
+    }
+
+    & > [data-line] {
+      border-left: 3px solid transparent;
+
+      &[data-highlighted-line] {
+        background:
+          linear-gradient(
+            90deg,
+            color-mix(in srgb, var(--secondary) 14%, transparent),
+            color-mix(in srgb, var(--tertiary) 8%, transparent)
+          );
+        border-left: 3px solid var(--secondary);
+      }
+
+      &::before {
+        color: color-mix(in srgb, var(--gray) 70%, var(--secondary) 30%);
+      }
+    }
+  }
+}
+
+/* =========================================
+   TABLES
+   ========================================= */
+
+.table-container {
+  padding: 0.5rem 0.75rem;
+}
+
+.table-container > table {
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+th {
+  color: color-mix(in srgb, var(--dark) 80%, var(--secondary) 20%);
+  border-bottom: 2px solid color-mix(in srgb, var(--secondary) 24%, var(--lightgray) 76%);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--secondary) 14%, transparent);
+}
+
+td {
+  color: var(--darkgray);
+}
+
+tr {
+  border-bottom: 1px solid color-mix(in srgb, var(--secondary) 9%, var(--lightgray) 91%);
+
+  &:hover {
+    background: color-mix(in srgb, var(--secondary) 4%, transparent);
+  }
+}
+
+/* =========================================
+   MEDIA
+   ========================================= */
+
+img,
+audio,
+video,
+iframe.pdf,
+.external-embed.youtube {
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--secondary) 15%, var(--lightgray) 85%);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--dark) 2%, transparent) inset,
+    0 0 22px color-mix(in srgb, var(--secondary) 7%, transparent);
+}
+
+/* =========================================
+   CHECKBOX
+   ========================================= */
+
+input[type="checkbox"] {
+  border: 1px solid color-mix(in srgb, var(--secondary) 40%, var(--lightgray) 60%);
+  background: color-mix(in srgb, var(--secondary) 7%, var(--light) 93%);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--secondary) 8%, transparent);
+
+  &:checked {
+    border-color: var(--tertiary);
+    background-color: var(--tertiary);
+    box-shadow: 0 0 14px color-mix(in srgb, var(--tertiary) 28%, transparent);
+  }
+}
+
+/* =========================================
+   HORIZONTAL RULE / FOOTNOTES / PROGRESS
+   ========================================= */
+
+.footnotes {
+  border-top: 1px solid color-mix(in srgb, var(--secondary) 12%, var(--lightgray) 88%);
+}
+
+hr {
+  background-color: color-mix(in srgb, var(--secondary) 12%, var(--lightgray) 88%);
+}
+
+.navigation-progress {
+  height: 4px;
+  background: linear-gradient(90deg, var(--secondary), var(--tertiary));
+  box-shadow:
+    0 0 8px color-mix(in srgb, var(--secondary) 28%, transparent),
+    0 0 18px color-mix(in srgb, var(--tertiary) 18%, transparent);
+}
+
+/* =========================================
+   SCROLLBARS
+   ========================================= */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color:
+    color-mix(in srgb, var(--secondary) 55%, var(--tertiary) 45%)
+    color-mix(in srgb, var(--lightgray) 50%, transparent);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: color-mix(in srgb, var(--lightgray) 50%, transparent);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--secondary), var(--tertiary));
+  border-radius: 999px;
+}
+
+/* =========================================
+   OPTIONAL GRID / HUD FEEL
+   ========================================= */
+
+.page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(
+      color-mix(in srgb, var(--secondary) 4%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--secondary) 4%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 28px 28px;
+  opacity: 0.18;
+  z-index: 0;
+}
+
+.page > #quartz-body .sidebar,
+.page-header,
+.page-footer,
+.center > article,
+footer,
+.table-container,
+blockquote {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+pre {
+  background: color-mix(in srgb, var(--light) 90%, black 10%);
+  border: 1px solid color-mix(in srgb, var(--secondary) 12%, var(--lightgray) 88%);
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+body {
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      color-mix(in srgb, var(--secondary) 20%, transparent),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 90% 10%,
+      color-mix(in srgb, var(--tertiary) 12%, transparent),
+      transparent 40%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--light) 92%, black 8%),
+      var(--light)
+    );
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.02),
+    rgba(255,255,255,0.02) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  opacity: 0.15;
+}
+
+:root[saved-theme="light"] {
+
+  body {
+    background: var(--light);
+  }
+
+  .page::before {
+    display: none;
+  }
+
+  pre,
+  .sidebar,
+  article {
+    background: var(--light);
+    box-shadow: none;
+  }
+
+}

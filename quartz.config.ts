@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
+    pageTitle: "Bryan's Garden",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -16,7 +16,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
+    baseUrl: "bryanteeph.com",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
@@ -39,16 +39,29 @@ const config: QuartzConfig = {
           highlight: "rgba(143, 159, 169, 0.15)",
           textHighlight: "#fff23688",
         },
+        // darkMode: {
+        //   light: "#161618",
+        //   lightgray: "#393639",
+        //   gray: "#646464",
+        //   darkgray: "#d4d4d4",
+        //   dark: "#ebebec",
+        //   secondary: "#7b97aa",
+        //   tertiary: "#84a59d",
+        //   highlight: "rgba(143, 159, 169, 0.15)",
+        //   textHighlight: "#b3aa0288",
+        // },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          light: "#0b1217",
+          lightgray: "#1b2a30",
+          gray: "#5f7f8a",
+          darkgray: "#d6f7ff",
+          dark: "#ffffff",
+
+          secondary: "#39C5BB",   // Miku teal
+          tertiary: "#ff6ec7",    // accent pink
+
+          highlight: "rgba(57, 197, 187, 0.12)",
+          textHighlight: "rgba(255, 110, 199, 0.25)",
         },
       },
     },
