@@ -373,6 +373,7 @@ hr {
    ========================================= */
 
 @media (max-width: 800px) {
+  /* keep headings clean */
   h1,
   .page .center article > h1,
   .page .page-header h1 {
@@ -383,61 +384,23 @@ hr {
     overflow-wrap: normal !important;
   }
 
+  .sidebar {
+    background-color: transparent !important;
+  }
+
   pre {
     border-radius: 6px;
   }
 
-  /* reset anything previously pushed into overlay behavior */
-  .page > #quartz-body .sidebar.left,
+  /* ONLY fix: remove glass/bubble visuals on mobile */
   .page-header,
-  .center,
   .center > article,
-  article {
-    position: static !important;
-    top: auto !important;
-    left: auto !important;
-    z-index: auto !important;
-  }
-
-  /* keep sidebar itself neutral */
-  .page > #quartz-body .sidebar.left {
+  footer,
+  .table-container,
+  blockquote {
     background: transparent !important;
-    border: none !important;
     box-shadow: none !important;
-  }
-
-  /* only elevate the explorer wrapper, not the whole sidebar */
-  .page > #quartz-body .sidebar.left .explorer {
-    position: relative !important;
-    z-index: 20 !important;
-  }
-
-  /* when mobile explorer is expanded, keep its content above the page
-     without turning the whole top bar/sidebar into an overlay */
-  .page > #quartz-body .sidebar.left .explorer[aria-expanded="true"] .explorer-content {
-    position: absolute !important;
-    top: calc(100% + 0.5rem) !important;
-    left: 0 !important;
-    width: min(82vw, 22rem) !important;
-    max-height: 75vh !important;
-    overflow-y: auto !important;
-
-    background: var(--light) !important;
-    border: 1px solid var(--lightgray) !important;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22) !important;
-    border-radius: 10px !important;
-    padding: 1rem !important;
-    z-index: 30 !important;
-  }
-
-  .page > #quartz-body .sidebar.left .explorer[aria-expanded="true"] .explorer-content .explorer-ul,
-  .page > #quartz-body .sidebar.left .explorer[aria-expanded="true"] .explorer-content .folder-outer,
-  .page > #quartz-body .sidebar.left .explorer[aria-expanded="true"] .explorer-content .content {
-    background: transparent !important;
-  }
-
-  .page > #quartz-body .sidebar.left .mobile-explorer {
-    position: relative !important;
-    z-index: 31 !important;
+    border: none !important;
+    backdrop-filter: none !important;
   }
 }
